@@ -1,13 +1,3 @@
-;Seção com dados estáticos
-section .data
-            ;Não será usado nenhum dado estático nessa rotina.
-
-;Seção com dados dinâmicos.
-section .bss
-            ;Não será usado nenhum dado dinâmico nessa rotina.
-
-
-;Seção com o código fonte da rotina
 section .text
 
 global triangulo
@@ -22,10 +12,10 @@ triangulo:
     push edx                ; Salvando os registradores que serão utilizados nessa rotina.
 
 
-    mov ecx, [ebp+8]        ; parâmetro: Hipotenusa
-    mov ebx, [ebp+12]       ; parâmetro: Cateto
-    mov edx, [ebp+16]       ; parâmetro: Cateto
-    mov eax, [ebp+20]       ; parâmetro que ira receber se é ou nao é triangulo retangulo
+    mov ecx, [ebp+8]        ; Hipotenusa
+    mov ebx, [ebp+12]       ; Cateto 1
+    mov edx, [ebp+16]       ; Cateto 2
+    mov eax, [ebp+20]       ; Retorno
 
 checktriangulo:             ; Label da função que calcula e verifica se é triangulo retangulo
 
@@ -38,7 +28,7 @@ checktriangulo:             ; Label da função que calcula e verifica se é tri
     cmp ecx, ebx   ; verificando se a soma dos quadrados
                    ; dos catetos é igual ao quadrado da hipotenusa.
 
-     jne  nretangulo    ; Pula para a Label "nretangulo" se a compaarção nao for igual
+     jne  nretangulo    ; Pula para a Label "nretangulo" se não for triângulo retângulo
      jmp  retangulo     ; pula para a Label "retangulo" se a comparação for igual
 
 retangulo:                
